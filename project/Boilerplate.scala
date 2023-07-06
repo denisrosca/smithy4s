@@ -223,6 +223,10 @@ object Boilerplate {
       -      def apply[${`A..N`}](fa: F[${`A..N`}]): H[${`A..N`}] = other(self(fa))
       -   }
       -
+      -   final def compose[H[${`_.._`}]](other: PolyFunction$suffix[H, F]): PolyFunction$suffix[H, G] = new PolyFunction$suffix[H, G]{
+      -      def apply[${`A..N`}](ha: H[${`A..N`}]): G[${`A..N`}] = self(other(ha))
+      -   }
+      -
       -   import Kind$arity._
       -   private[smithy4s] final def unsafeCacheBy[K](allPossibleInputs: Seq[Existential[F]], getKey: Existential[F] => K): PolyFunction$suffix[F, G] =
       -     new PolyFunction$suffix[F, G] {
